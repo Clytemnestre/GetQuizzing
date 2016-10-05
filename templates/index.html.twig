@@ -1,0 +1,35 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Get Quizzing</title>
+        <meta name="Marilou" content="Get Quizzing">
+
+        <link rel="stylesheet" href="/styles.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                
+            });
+        </script>
+    </head>
+
+    <body id="indexBodyEducator">
+        <nav id="educatorNav">
+            <ul>
+                <li class="horizontalNavigation">EDUCATOR</li>
+                <li class="horizontalNavigation"><a href="/learner">LEARNER</a></li>
+            </ul>
+        </nav><br>
+        <main id="mainindex">
+            <form method="post">
+            <input type="text" class="indexTextBox" value="email" name="email">
+            <input type="password" class="indexTextBox" value="password" name="password"><br><br>
+            <input type="submit" name="educatorLogIn"><br><br>
+            </form>
+            <p>Dont have an account yet? <a href="/registerEducator">Register!</a></p>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,64 @@
+/*////////////////////////////////////////////////
+///////////EDUCATORS MASTER CSS/////////////////*/
+h3 {
+    background-color: rosybrown;
+}
+
+#navUL {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+
+li a:hover {
+    background-color: #555;
+    color: white;
+}
+
+#educatormain{
+    margin-left: 27%;
+}
+/*//////educator index///////*/
+#indexBodyEducator {
+    background-color: #FFDBD0;
+}
+
+.horizontalNavigation {
+    display: inline;
+    float: left;
+    background-color: #929CCC;
+    padding: 1.7%;
+}
+#educatorNav{
+    display: block;
+    background-color: yellow;
+}
+#mainindex {
+    text-align: center;
+    margin-top: 20%;
+    display: block;
+    padding: 7%;
+    background-color: orange;
+}
+
+.indexTextBox{
+    width: 20%;
+}
+/*////////////////////////////////////////////////
+///////////learner index////////////////////////*/
+#indexBodylearner{
+    background-color: blue;
+}

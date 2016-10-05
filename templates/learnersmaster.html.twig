@@ -1,0 +1,31 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Get Quizzing</title>
+        <meta name="Marilou" content="Get Quizzing">
+
+        <link rel="stylesheet" href="styles.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+
+            });
+        </script>
+    </head>
+
+    <body>
+        <header>
+            <h3>Your educators want you to get quizzing! it a lot easier than a paper exam is all we can say.</h3>
+        </header>
+        <nav id="navigation">
+            <ul id="navUL">
+                <li><a href="">INVITATIONS</a></li>
+                <li><a href="">ACCOUNT</a></li>
+            </ul>
+        </nav>
+        <main id="educatormain">{% block content %}{% endblock %}</main>
+    </body>
+</html>
