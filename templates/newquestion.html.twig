@@ -1,0 +1,18 @@
+{% extends "educatorsmaster.html.twig" %}
+{% block content %}
+    <h2>
+        add a question 
+    </h2><br>
+    {% if errorList %}
+        <ul>
+            {% for error in errorList %}
+                <li>{{ error }}</li>
+                {% endfor %}
+        </ul>
+    {% endif %}
+    <form>
+        <label>question</label><br>
+        <textarea rows="4" cols="50"></textarea><br>
+        
+    </form>
+{% endblock %}

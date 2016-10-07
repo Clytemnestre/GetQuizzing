@@ -62,3 +62,11 @@ li a:hover {
 #indexBodylearner{
     background-color: blue;
 }
+/*////////////////////////////////////////////////
+///////////EDUCATORS HOME///////////////////////*/
+#createQuiz{
+    background-color: yellowgreen;
+    font-size: 2em;
+    text-align: center;
+    padding: 2%;
+}

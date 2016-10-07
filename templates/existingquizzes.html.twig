@@ -1,0 +1,25 @@
+{% extends "educatorsmaster.html.twig" %}
+{% block content %}
+        <h2>
+            You have already created the quiz (zes) below
+        </h2><br>
+        <table border="1">
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>See Quiz</th>
+                <th>Add question</th>
+                <th>Send to learners</th>
+            </tr>
+            {% for quiz in quizList %}
+            <tr>
+                <td>{{quiz.ID}}</td>
+                <td>{{quiz.title}}</td>
+                <td><a href="/seeQuiz">Visualize</a></td>
+                <td><a href="/newquestion/{{quiz.ID}}">add</a></td>
+                <td><a href="/invites">suffer</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+{% endblock %}
+

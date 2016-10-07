@@ -1,0 +1,20 @@
+{% extends "educatorsmaster.html.twig" %}
+{% block content %}
+        {% if errorList %}
+            <ul>
+                {% for error in errorList %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+            </ul>
+        {% endif %}
+        <h2>Modify your stuff</h2>
+        <form method="post">
+            <label>firt name  </label>
+            <input type="text" value="{{educator.firstName}}" name="educatorFirstName"><br>
+            <label>last name  </label>
+            <input type="text" value="{{educator.lastName}}" name="educatorLastName"><br>
+            <label>last name  </label>
+            <input type="text" value="{{educator.email}}" name="educatorEmail"><br><br>
+            <input type="submit" value="save changes">
+        </form>
+{% endblock %}

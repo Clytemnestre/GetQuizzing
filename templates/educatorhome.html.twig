@@ -1,4 +1,12 @@
 {% extends "educatorsmaster.html.twig" %}
 {% block content %}
-    <h1>abcdefghijklmnopqrstuvwxyz</h1>
+    <h1>Hi<span> {{educator.firstName}} </span>it's goo to see you.</h1><br>
+    <div>
+        <p id="createQuiz">Create new quiz.</p><br>
+        <form method="post">
+            <label>What will be th name of the quiz?  </label>
+            <input type="text" name="quizName"><br>        
+            <input type="submit" value="create quiz!" name="createquiz">
+        </form>
+    </div>
 {% endblock %}
