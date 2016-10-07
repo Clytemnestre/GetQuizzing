@@ -17,10 +17,10 @@ $log = new Logger('main');
 $log->pushHandler(new StreamHandler('logs/everything.log', Logger::DEBUG));
 $log->pushHandler(new StreamHandler('logs/errors.log', Logger::ERROR));
 
-/*DB::$user = 'cp4724_marilou';
-DB::$password = 'x%#BHsDnlJhZ';
-DB::$dbName = 'cp4724_marilou';
-DB::$host = 'ipd8.info';*/
+// DB::$user = 'cp4724_marilou';
+//  DB::$password = 'x%#BHsDnlJhZ';
+//  DB::$dbName = 'cp4724_marilou';
+//  DB::$host = 'ipd8.info'; 
 
 DB::$user = 'getquizzing';
 DB::$password = 'YfAruab4HzDXhTKC';
@@ -232,10 +232,10 @@ $app->post('/learner', function() use ($app, $log) {
         if ($user['password'] === $pass) {
             $app->render('login_success_learners.html.twig');
             // LOGIN successful
-            /* unset($user['password']);
+            unset($user['password']);
               $_SESSION['user'] = $user;
               $log->debug(sprintf("User %s logged in successfuly from IP %s",
-              $user['ID'], $_SERVER['REMOTE_ADDR'])); */
+              $user['ID'], $_SERVER['REMOTE_ADDR']));
         } else {
             $log->debug(sprintf("User failed for email %s from IP %s", $email, $_SERVER['REMOTE_ADDR']));
             echo 'SHIT2';
@@ -282,6 +282,106 @@ $app->get('/newquestion/:id', function() use ($app) {
     }
 });
 
+$app->post('/newquestion/:id', function($ID) use ($app) {
+    $quizID = $ID;
+    $body = $app->request->post('questionbody');
+    $c1 = $app->request->post('c1');
+    $c2 = $app->request->post('c2');
+    $c3 = $app->request->post('c3');
+    $c4 = $app->request->post('c4');
+    $answer = $app->request->post('questionchoice');
+    $errorList = array();
+
+    if (!isset($answer)) {
+        array_push($errorList, "select the correct answer");
+    }
+
+    if ((strlen($body) < 10) || (strlen($body) > 500)) {
+        array_push($errorList, "question must be between 10 and 500 characters");
+    }
+
+    if (strlen($c1) < 1) {
+        array_push($errorList, "enter more text in the first text box");
+    }
+
+    if (strlen($c2) < 1) {
+        array_push($errorList, "enter more text in the second text box");
+    }
+
+    if (strlen($c3) < 1) {
+        array_push($errorList, "enter more text in the third text box");
+    }
+
+    if (strlen($c4) < 1) {
+        array_push($errorList, "enter more text in the fourth text box");
+    }
+
+    if ($errorList) {
+        // STATE 3: submission failed        
+        $app->render('newquestion.html.twig', array(
+            'errorList' => $errorList
+        ));
+    } else {
+        // STATE 2: submission successful
+        DB::insert('questions', array(
+            'quizID' => $quizID,
+            'body' => $body,
+            'c1' => $c1,
+            'c2' => $c2,
+            'c3' => $c3,
+            'c4' => $c4,
+            'answer' => $answer
+        ));
+        //$id = DB::insertId();
+        $app->render('addquestion_success.html.twig');
+    }
+});
+//////////////////////////////////////////////////////////////////////////////////
+////////////////////////////VISUALIZE A QUIZZ/////////////////////////////////////
+$app->get('/seeQuiz/:id', function($quizID) use ($app) {
+    if (!isset($_SESSION['user'])) {
+        echo "You can't sit with us!";
+    } else {
+        $questionList = DB::query("SELECT * FROM questions WHERE quizID=%d", $quizID);
+        $app->render('fullquiz.html.twig', array('questionList' => $questionList));
+    }
+});
+//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////INVITE LEARNERS TO YOUR TAKE YOUR QUIZ//////////////
+$app->get('/invites/:id', function($quizID) use ($app) {
+    if (!isset($_SESSION['user'])) {
+        echo "You can't sit with us!";
+    } else {
+        $studentList = DB::query("SELECT * FROM learners");
+        $app->render('inviteLearners.html.twig', array('studentList' => $studentList));
+    }
+});
+
+$app->post('/invites/:id', function($quizID) use ($app) {
+    $invitations = array();
+    $quizID = $quizID;
+    $errorList = array();
+
+    if (!isset($_POST['check_list'])) {
+        array_push($errorList, "you must select at least one learner to do your quiz");
+    } else {
+        foreach ($_POST['check_list'] as $invite) {
+            array_push($invitations, $invite);
+        }
+    }
+
+    if ($errorList) {
+        $studentList = DB::query("SELECT * FROM learners");
+        $app->render('inviteLearners.html.twig', array('errorList' => $errorList, 'studentList' => $studentList));
+    } else {
+        foreach ($invitations as $learnerID) {
+            DB::insert('invitations', array(
+                'quizID' => $quizID,
+                'leanerID' => $learnerID
+            ));
+        }
+    }
+});
 //////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////EDUCATOR ACCOUNT//////////////////////////////////////
 $app->get('/account', function() use ($app) {
@@ -325,17 +425,12 @@ $app->post('/account', function() use ($app) {
         DB::update('educators', array(
             'firstName' => $firstName,
             'lastName' => $lastName,
-            'email' => $email),
-            "ID=%d", $_SESSION['user']['ID']);
+            'email' => $email), "ID=%d", $_SESSION['user']['ID']);
         //$id = DB::insertId();
         $app->render('change_success_educator.html.twig');
     }
 });
-//////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////EDUCATOR EXISTING QUIZZES//////////////////////////
-$app->get('/existingquizzes', function() use ($app) {
-    $app->render('existingquizzes.html.twig');
-});
+
 //////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////EDUCATOR LOGOUT////////////////////////////////////
 $app->get('/logout', function() use ($app, $log) {
@@ -346,12 +441,33 @@ $app->get('/logout', function() use ($app, $log) {
 //////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////LEARNERS HOME/////////////////////////////////////////
 $app->get('/learnershome', function() use ($app) {
-
+    if (!isset($_SESSION['user'])) {
+        echo "You can't sit with us!";
+    } else {
+        $app->render('learnerhome.html.twig', array('learner' => $_SESSION['user']));
+    }    
 });
 //////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////LEARNER INVITATIONS///////////////////////////////
-$app->get('/learnerinvitation', function() use ($app) {
-
+$app->get('/invitations', function() use ($app) {
+    if (!isset($_SESSION['user'])) {
+        echo "You can't sit with us!";
+    } else {
+        $invitationList = DB::query("SELECT * FROM invitations WHERE leanerID=%d", $_SESSION['user']['ID']);
+        $app->render('invitations.html.twig', array('learner' => $_SESSION['user'], 'invitationList'=>$invitationList));
+    }       
 });
+//////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////LEARNER TAKE QUIZ////////////////////////////////////
+$app->get('/takequiz/:id', function($quizID) use ($app) {
+    $quizID = $quizID;
+    if (!isset($_SESSION['user'])) {
+        echo "You can't sit with us!";
+    } else {
+        $questionList = DB::query("SELECT * FROM questions WHERE quizID=%d", $quizID);
+        $app->render('takequiz.html.twig', array('learner' => $_SESSION['user'], 'questionList'=>$questionList));
+    }       
+});
+
 
 $app->run();

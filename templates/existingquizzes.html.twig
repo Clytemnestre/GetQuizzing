@@ -15,9 +15,9 @@
             <tr>
                 <td>{{quiz.ID}}</td>
                 <td>{{quiz.title}}</td>
-                <td><a href="/seeQuiz">Visualize</a></td>
+                <td><a href="/seeQuiz/{{quiz.ID}}">Visualize</a></td>
                 <td><a href="/newquestion/{{quiz.ID}}">add</a></td>
-                <td><a href="/invites">suffer</a></td>
+                <td><a href="/invites/{{quiz.ID}}">suffer</a></td>
             </tr>
             {% endfor %}
         </table>

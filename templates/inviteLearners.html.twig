@@ -1,0 +1,18 @@
+{% extends "educatorsmaster.html.twig" %}
+{% block content %}
+        {% if errorList %}
+            <ul>
+                {% for error in errorList %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+            </ul>
+        {% endif %}
+        <h2>invite your students!</h2>
+        <form method="post">
+            <input type="submit" value="invite learners">
+            {% for student in studentList %}
+                <p>{{student.ID}} {{student.lastName}}, {{student.firstName}}</p>
+                <input type="checkbox" name="check_list[]" value="{{student.ID}}"><br>
+                    {% endfor %}            
+        </form>
+{% endblock %}

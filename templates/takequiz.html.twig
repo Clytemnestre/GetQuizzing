@@ -1,0 +1,18 @@
+{% extends "learnersmaster.html.twig" %}
+{% block content %}
+        taking the quiz
+        <form type="post">
+        {% for question in questionList %}
+            <p>{{question.body}}</p>
+            <input type="radio" name="questionchoice" value="c1">
+            <p>{{question.c1}}</p>
+            <input type="radio" name="questionchoice" value="c2">
+            <p>{{question.c2}}</p> 
+            <input type="radio" name="questionchoice" value="c3">
+            <p>{{question.c3}}</p>
+            <input type="radio" name="questionchoice" value="c4">
+            <p>{{question.c4}}</p>
+        {% endfor %}
+        <input type="submit">
+        </form>
+{% endblock %}

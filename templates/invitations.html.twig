@@ -1,0 +1,15 @@
+{% extends "learnersmaster.html.twig" %}
+{% block content %}
+    <h2>You have been invited by educators to take the following quizzes</h2>
+    <table>
+        <tr>
+            <th>quiz</th><th>take quiz</th>
+        </tr>
+        {% for invitation in invitationList %}
+            <tr>
+                <td>{{invitation.ID}}</td>
+                <td><a href="/takequiz/{{invitation.quizID}}">Take it!</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endblock %}

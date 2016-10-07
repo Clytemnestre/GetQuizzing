@@ -10,9 +10,21 @@
                 {% endfor %}
         </ul>
     {% endif %}
-    <form>
-        <label>question</label><br>
-        <textarea rows="4" cols="50"></textarea><br>
-        
+    <form method="post">
+        <label>question (tick the right answer) </label><br>
+        <textarea rows="4" cols="50" name="questionbody"></textarea><br>
+        <label>First choice</label><br>
+        <input type="radio" name="questionchoice" value="c1">
+        <input type="text" name="c1"><br>
+        <label>Second choice  </label><br>
+        <input type="radio" name="questionchoice" value="c2">
+        <input type="text" name="c2"><br> 
+        <label>third choice  </label><br>
+        <input type="radio" name="questionchoice" value="c3">
+        <input type="text" name="c3"><br>
+        <label>Fourth choice  </label><br>
+        <input type="radio" name="questionchoice" value="c4">
+        <input type="text" name="c4"><br><br>
+        <input type="submit" value="Add question">
     </form>
 {% endblock %}
