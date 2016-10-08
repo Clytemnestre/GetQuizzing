@@ -1,15 +1,28 @@
+body {
+    font-family: "Arial Black", Gadget, sans-serif;
+    background-color: #E8E0DA;
+}
+
+a {
+    text-decoration: none;
+}
+
 /*////////////////////////////////////////////////
 ///////////EDUCATORS MASTER CSS/////////////////*/
 h3 {
-    background-color: rosybrown;
+    background-color: #FEFFEF;
+    margin: 0;
+    padding: 2em;
+    padding-left: 0.6em;
+    color: #2B7DBD;
 }
 
 #navUL {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    width: 25%;
-    background-color: #f1f1f1;
+    width: 15%;
+    background-color: #FEFFEF;
     position: fixed;
     height: 100%;
     overflow: auto;
@@ -20,38 +33,46 @@ li a {
     color: #000;
     padding: 8px 16px;
     text-decoration: none;
+    color: #2B7DBD;
 }
 
 
 li a:hover {
-    background-color: #555;
-    color: white;
+    background-color: #2B7DBD;
+    color: #FEFFEF;
+}
+
+#greeting{
+    text-align: center;
+    color: #2B7DBD;
+    padding: 2%;
 }
 
 #educatormain{
-    margin-left: 27%;
+    margin-left: 17%;
+    background-color: #FEFFEF;
 }
 /*//////educator index///////*/
 #indexBodyEducator {
-    background-color: #FFDBD0;
+    background-color: #FEFFEF;
 }
 
 .horizontalNavigation {
     display: inline;
     float: left;
-    background-color: #929CCC;
+    background-color: #2B7DBD;
+    color: FEFFEF;
     padding: 1.7%;
 }
 #educatorNav{
     display: block;
-    background-color: yellow;
 }
 #mainindex {
     text-align: center;
-    margin-top: 20%;
+    margin-top: 7em;
     display: block;
     padding: 7%;
-    background-color: orange;
+    background-color: #E8E0DA;
 }
 
 .indexTextBox{

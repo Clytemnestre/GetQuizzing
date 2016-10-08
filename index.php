@@ -469,5 +469,70 @@ $app->get('/takequiz/:id', function($quizID) use ($app) {
     }       
 });
 
+$app->post('/takequiz/:id', function() use ($app) {
+    echo 'test';
+    /*$questionID = $app->request->post('questionID');
+    $learnerID = $$_SESSION['user']['ID'];
+    $answer = $app->request->post('questionchoice');
+    if (!isset($_SESSION['user'])) {
+        echo "You can't sit with us!";
+    } else {
+        $questionList = DB::query("SELECT * FROM questions WHERE quizID=%d", $quizID);
+        $app->render('takequiz.html.twig', array('learner' => $_SESSION['user'], 'questionList'=>$questionList));
+    }  */     
+});
+//////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////LEARNER LOGOUT////////////////////////////////////
+$app->get('/logoutlearner', function() use ($app, $log) {
+    $_SESSION['user'] = array();
+    $app->render('logout_success.html.twig');
+});
+//////////////////////////////////////////////////////////////////////////////////
+////////////////////////////LEARNER ACCOUNT///////////////////////////////////////
+$app->get('/learneraccount', function() use ($app) {
+    if (!isset($_SESSION['user'])) {
+        echo "You can't sit with us!";
+    } else {
+        $app->render('learneraccount.html.twig', array('learner' => $_SESSION['user']));
+    }
+});
 
+$app->post('/learneraccount', function() use ($app) {
+    $firstName = $app->request->post('educatorFirstName');
+    $lastName = $app->request->post('educatorLastName');
+    $email = $app->request->post('educatorEmail');
+    $errorList = array();
+
+    if (strlen($firstName) < 2) {
+        array_push($errorList, 'first name must be at least two characters long');
+    }
+
+    if (strlen($lastName) < 2) {
+        array_push($errorList, 'last name must be at least two characters long');
+    }
+
+    if (filter_var($email, FILTER_VALIDATE_EMAIL) === FALSE) {
+        array_push($errorList, "Email does not look like a valid email");
+    } else {
+        $user = DB::queryFirstRow("SELECT ID FROM learners WHERE email=%s", $email);
+        if ($user) {
+            array_push($errorList, "Email already registered");
+        }
+    }
+
+    if ($errorList) {
+        // STATE 3: submission failed        
+        $app->render('educatoraccount.html.twig', array(
+            'errorList' => $errorList
+        ));
+    } else {
+        //STATE 2: submission successful
+        DB::update('educators', array(
+            'firstName' => $firstName,
+            'lastName' => $lastName,
+            'email' => $email), "ID=%d", $_SESSION['user']['ID']);
+        //$id = DB::insertId();
+        $app->render('change_success_educator.html.twig');
+    }
+});
 $app->run();
