@@ -8,7 +8,6 @@
                 <th>#</th>
                 <th>Title</th>
                 <th>See Quiz</th>
-                <th>Add question</th>
                 <th>Send to learners</th>
             </tr>
             {% for quiz in quizList %}
@@ -16,8 +15,7 @@
                 <td>{{quiz.ID}}</td>
                 <td>{{quiz.title}}</td>
                 <td><a href="/seeQuiz/{{quiz.ID}}">Visualize</a></td>
-                <td><a href="/newquestion/{{quiz.ID}}">add</a></td>
-                <td><a href="/invites/{{quiz.ID}}">suffer</a></td>
+                <td><a href="/invites/{{quiz.ID}}">send to learners</a></td>
             </tr>
             {% endfor %}
         </table>

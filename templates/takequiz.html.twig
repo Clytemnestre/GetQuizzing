@@ -1,20 +1,67 @@
 {% extends "learnersmaster.html.twig" %}
 {% block content %}
-    taking the quiz
-    <form type="post">
-        {% for question in questionList %}
-            <span name="questionID">{{question.ID}}</span>
-            <p>{{question.body}}</p>
-            <input type="radio" name="option" value="c1">
-            <p>{{question.c1}}</p>
-            <input type="radio" name="option" value="c2">
-            <p>{{question.c2}}</p> 
-            <input type="radio" name="option" value="c3">
-            <p>{{question.c3}}</p>
-            <input type="radio" name="option" value="c4">
-            <p>{{question.c4}}</p>            
-            <hr>
-        {% endfor %}
-        <input type="submit">
+    <h2>Take the quiz!</h2><br>
+    <form method="post">
+        <p>1.  {{q1.body}}</p>
+        <input type="text" value="{{q1.ID}}" hidden name="q1id">
+        <input type="radio" name="q1" value="c1" class="inlineBlock">
+        <p class="inlineBlock">{{q1.c1}}</p><br>
+        <input type="radio" name="q1" value="c2" class="inlineBlock">
+        <p class="inlineBlock">{{q1.c2}}</p><br>
+        <input type="radio" name="q1" value="c3" class="inlineBlock">
+        <p class="inlineBlock">{{q1.c3}}</p><br>
+        <input type="radio" name="q1" value="c4" class="inlineBlock">
+        <p class="inlineBlock">{{q1.c4}}</p><br><br>
+        <p>2.  {{q2.body}}</p>
+        <input type="text" value="{{q2.ID}}" hidden name="q2id">
+        <input type="radio" name="q2" value="c1" class="inlineBlock">
+        <p class="inlineBlock">{{q2.c1}}</p><br>
+        <input type="radio" name="q2" value="c2" class="inlineBlock">
+        <p class="inlineBlock">{{q2.c2}}</p><br>
+        <input type="radio" name="q2" value="c3" class="inlineBlock">
+        <p class="inlineBlock">{{q2.c3}}</p><br>
+        <input type="radio" name="q2" value="c4" class="inlineBlock">
+        <p class="inlineBlock">{{q2.c4}}</p><br><br>
+        <p>3.  {{q3.body}}</p>
+        <input type="text" value="{{q3.ID}}" hidden name="q3id">
+        <input type="radio" name="q3" value="c1" class="inlineBlock">
+        <p class="inlineBlock">{{q3.c1}}</p><br>
+        <input type="radio" name="q3" value="c2" class="inlineBlock">
+        <p class="inlineBlock">{{q3.c2}}</p><br>
+        <input type="radio" name="q3" value="c3" class="inlineBlock">
+        <p class="inlineBlock">{{q3.c3}}</p><br>
+        <input type="radio" name="q3" value="c4" class="inlineBlock">
+        <p class="inlineBlock">{{q3.c4}}</p><br><br>
+        <p>4.  {{q4.body}}</p>
+        <input type="text" value="{{q4.ID}}" hidden name="q4id">
+        <input type="radio" name="q4" value="c1" class="inlineBlock">
+        <p class="inlineBlock">{{q4.c1}}</p><br>
+        <input type="radio" name="q4" value="c2" class="inlineBlock">
+        <p class="inlineBlock">{{q4.c2}}</p><br>
+        <input type="radio" name="q4" value="c3" class="inlineBlock">
+        <p class="inlineBlock">{{q4.c3}}</p><br>
+        <input type="radio" name="q4" value="c4" class="inlineBlock">
+        <p class="inlineBlock">{{q4.c4}}</p><br><br>
+        <p>5.  {{q5.body}}</p>
+        <input type="text" value="{{q5.ID}}" hidden name="q5id">
+        <input type="radio" name="q5" value="c1" class="inlineBlock">
+        <p class="inlineBlock">{{q5.c1}}</p><br>
+        <input type="radio" name="q5" value="c2" class="inlineBlock">
+        <p class="inlineBlock">{{q5.c2}}</p><br>
+        <input type="radio" name="q5" value="c3" class="inlineBlock">
+        <p class="inlineBlock">{{q5.c3}}</p><br>
+        <input type="radio" name="q5" value="c4" class="inlineBlock">
+        <p class="inlineBlock">{{q5.c4}}</p><br><br>
+        <p>6.  {{q6.body}}</p>
+        <input type="text" value="{{q6.ID}}" hidden name="q6id">
+        <input type="radio" name="q6" value="c1" class="inlineBlock">
+        <p class="inlineBlock">{{q6.c1}}</p><br>
+        <input type="radio" name="q6" value="c2" class="inlineBlock">
+        <p class="inlineBlock">{{q6.c2}}</p><br>
+        <input type="radio" name="q6" value="c3" class="inlineBlock">
+        <p class="inlineBlock">{{q6.c3}}</p><br>
+        <input type="radio" name="q6" value="c4" class="inlineBlock">
+        <p class="inlineBlock">{{q6.c4}}</p><br><br>
+        <input type="submit" value="Submit Quiz!">
     </form>
 {% endblock %}

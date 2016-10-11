@@ -6,10 +6,10 @@ body {
 a {
     text-decoration: none;
 }
-
 /*////////////////////////////////////////////////
 ///////////EDUCATORS MASTER CSS/////////////////*/
 h3 {
+    position: fixed;
     background-color: #FEFFEF;
     margin: 0;
     padding: 2em;
@@ -49,7 +49,11 @@ li a:hover {
 }
 
 #educatormain{
-    margin-left: 17%;
+    position: fixed;
+    margin-left: 16%;
+    height: 98%;
+    overflow: scroll;
+    width: 82%;
     background-color: #FEFFEF;
 }
 /*//////educator index///////*/
@@ -86,8 +90,31 @@ li a:hover {
 /*////////////////////////////////////////////////
 ///////////EDUCATORS HOME///////////////////////*/
 #createQuiz{
-    background-color: yellowgreen;
+    background-color: #2B7DBD;
     font-size: 2em;
     text-align: center;
+    margin: 5%;
     padding: 2%;
+    color: #FEFFEF;
 }
+
+#newQuiz{
+    text-align: center;
+    font-size: 2em;
+    color: #2B7DBD;
+}
+
+#warningContainer {
+    border: 1px solid #2B7DBD;
+    width: 40%;
+    padding: 2.5%;
+    margin: auto;
+    margin-top: 2%;
+}
+/*///////////////////////////////////////////////////////////////////////////
+//////////////////////////LEARNER TAKE QUIZ////////////////////////////////*/
+.inlineBlock{
+    display: inline-block;
+}
+
+

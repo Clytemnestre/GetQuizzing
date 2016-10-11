@@ -1,0 +1,82 @@
+{% extends "educatorsmaster.html.twig" %}
+{% block content %}
+
+    {% if errorList %}
+        <ul>
+            {% for error in errorList %}
+                <li>{{ error }}</li>
+                {% endfor %}
+        </ul>
+    {% endif %}
+    <form method="post">
+        <label>name of the quiz : </label>
+        <input type="text" name="quizname"><br>
+        <h4>question 1</h4>
+        <textarea rows="4" cols="50" name="q1"></textarea>
+        <h5>answer selection (tick the correct answer)</h5>
+        <input type="radio" name="question1" value="c1">
+        <input type="text" name="q1c1"><br>
+        <input type="radio" name="question1" value="c2">
+        <input type="text" name="q1c2"><br>
+        <input type="radio" name="question1" value="c3">
+        <input type="text" name="q1c3"><br>
+        <input type="radio" name="question1" value="c4">
+        <input type="text" name="q1c4"><br> 
+        <h4>question 2</h4>
+        <textarea rows="4" cols="50" name="q2"></textarea>
+        <h5>answer selection (tick the correct answer)</h5>
+        <input type="radio" name="question2" value="c1">
+        <input type="text" name="q2c1"><br>
+        <input type="radio" name="question2" value="c2">
+        <input type="text" name="q2c2"><br>
+        <input type="radio" name="question2" value="c3">
+        <input type="text" name="q2c3"><br>
+        <input type="radio" name="question2" value="c4">
+        <input type="text" name="q2c4"><br> 
+        <h4>question 3</h4>
+        <textarea rows="4" cols="50" name="q3"></textarea>
+        <h5>answer selection (tick the correct answer)</h5>
+        <input type="radio" name="question3" value="c1">
+        <input type="text" name="q3c1"><br>
+        <input type="radio" name="question3" value="c2">
+        <input type="text" name="q3c2"><br>
+        <input type="radio" name="question3" value="c3">
+        <input type="text" name="q3c3"><br>
+        <input type="radio" name="question3" value="c4">
+        <input type="text" name="q3c4"><br> 
+        <h4>question 4</h4>
+        <textarea rows="4" cols="50" name="q4"></textarea>
+        <h5>answer selection (tick the correct answer)</h5>
+        <input type="radio" name="question4" value="c1">
+        <input type="text" name="q4c1"><br>
+        <input type="radio" name="question4" value="c2">
+        <input type="text" name="q4c2"><br>
+        <input type="radio" name="question4" value="c3">
+        <input type="text" name="q4c3"><br>
+        <input type="radio" name="question4" value="c4">
+        <input type="text" name="q4c4"><br>
+        <h4>question 5</h4>
+        <textarea rows="4" cols="50" name="q5"></textarea>
+        <h5>answer selection (tick the correct answer)</h5>
+        <input type="radio" name="question5" value="c1">
+        <input type="text" name="q5c1"><br>
+        <input type="radio" name="question5" value="c2">
+        <input type="text" name="q5c2"><br>
+        <input type="radio" name="question5" value="c3">
+        <input type="text" name="q5c3"><br>
+        <input type="radio" name="question5" value="c4">
+        <input type="text" name="q5c4"><br>
+        <h4>question 6</h4>
+        <textarea rows="4" cols="50" name="q6"></textarea>
+        <h5>answer selection (tick the correct answer)</h5>
+        <input type="radio" name="question6" value="c1">
+        <input type="text" name="q6c1"><br>
+        <input type="radio" name="question6" value="c2">
+        <input type="text" name="q6c2"><br>
+        <input type="radio" name="question6" value="c3">
+        <input type="text" name="q6c3"><br>
+        <input type="radio" name="question6" value="c4">
+        <input type="text" name="q6c4"><br><br>
+        <input type="submit" value="create new quiz"><br><br>
+    </form>    
+{% endblock %}

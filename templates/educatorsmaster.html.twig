@@ -11,15 +11,12 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script>
             $(document).ready(function () {
-
             });
         </script>
     </head>
 
     <body>
-        <header>
-            <h3>GetQuizzing! Force your students to take a quiz online and dont bother with the grading.</h3>
-        </header>
+
         <nav id="navigation">
             <ul id="navUL">
                 <li><a href="/educatorshome">CREATE QUIZZES</a></li>
@@ -29,6 +26,8 @@
                 <li><a href="/logout">LOGOUT</a></li>
             </ul>
         </nav>
-        <main id="educatormain">{% block content %}{% endblock %}</main>
+        <main id="educatormain">
+        <h1 id="greeting">Hi<span> {{educator.firstName}} </span>it's goo to see you.</h1><br>
+        {% block content %}{% endblock %}</main>
     </body>
 </html>
