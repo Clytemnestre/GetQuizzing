@@ -1,0 +1,22 @@
+{% extends "educatorsmaster.html.twig" %}
+{% block content %}
+    <h2 id="quiztitle">{{quizinfo.title}}</h2>
+    <div>
+        <a href="/questions/:id/questions/add">Add a question</a>
+    </div>
+    {% for question in questionList %}
+        <div>
+            <p>{{question.body}}</p><br>
+            <p>CHOICES</p>
+            <p>{{question.c1}}</p>
+            <p>{{question.c2}}</p>
+            <p>{{question.c3}}</p>
+            <p>{{question.c4}}</p>
+        </div>
+        <div>
+            <a href="/questions/:id/edit/{{question.ID}}">EDIT</a>
+            <a href="/questions/:id/delete/{{question.ID}}">DELETE</a>
+        </div>
+    {% endfor %}
+
+{% endblock %}

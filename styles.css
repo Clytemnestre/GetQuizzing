@@ -116,5 +116,10 @@ li a:hover {
 .inlineBlock{
     display: inline-block;
 }
-
-
+/*///////////////////////////////////////////////////////////////////////////
+//////////////////////////EDUCATOR MANAGE QUIZ/////////////////////////////*/
+#quiztitle{
+    font-size: 3em;
+    text-align: center;
+    margin: auto;
+}
