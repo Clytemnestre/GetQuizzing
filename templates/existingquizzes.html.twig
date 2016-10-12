@@ -4,18 +4,19 @@
             You have already created the quiz (zes) below
         </h2><br>
         <table border="1">
-            <tr>
-                <th>#</th>
+            <!--<tr>
                 <th>Title</th>
                 <th>See Quiz</th>
                 <th>Send to learners</th>
-            </tr>
+                <th>see results</th>
+            </tr>-->
             {% for quiz in quizList %}
             <tr>
-                <td>{{quiz.ID}}</td>
                 <td>{{quiz.title}}</td>
-                <td><a href="/seeQuiz/{{quiz.ID}}">Visualize</a></td>
+                <td><a href="/seeQuiz/{{quiz.ID}}">See quiz</a></td>
                 <td><a href="/invites/{{quiz.ID}}">send to learners</a></td>
+                <td><a href="/seeresults/{{quiz.ID}}">see results</a></td>
+                <td><a href="/deletequiz/{{quiz.ID}}">delete</a></td>
             </tr>
             {% endfor %}
         </table>

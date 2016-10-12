@@ -1,0 +1,16 @@
+{% extends "learnersmaster.html.twig" %}
+{% block content %}
+    <h2>results for the previously taken quizzes</h2>
+    <table>
+        <tr>
+            <th>quiz</th>
+            <th>score</th>
+        </tr>
+            {% for result in resultList %}
+                <tr>
+                    <td>{{result.quizID}}</td>
+                    <td>{{result.result}}/6</td>
+                </tr>
+            {% endfor %}
+    </table>
+{% endblock %}

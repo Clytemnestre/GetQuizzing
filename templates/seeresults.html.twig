@@ -1,0 +1,15 @@
+{% extends "educatorsmaster.html.twig" %}
+{% block content %}
+        <table border="1">
+            <tr>
+                <th>student</th>
+                <th>score</th>
+            </tr>
+            {% for result in resultList %}
+                <tr>
+                    <td>{{result.learnerID}}</td>
+                    <td>{{result.result}}/6</td>
+                </tr>
+            {% endfor %}
+        </table>
+{% endblock %}
